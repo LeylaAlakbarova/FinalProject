@@ -1,0 +1,59 @@
+﻿@model SidebarVM
+@{
+    Layout = null;
+}
+
+
+
+<div class="single-blog-widget mb-50">
+    <h3>search</h3>
+    <div class="blog-search">
+        <form id="search">
+            <input type="search" placeholder="Search..." id="sidebar-input-search" name="sidebarSearch" />
+            <button type="submit">
+                <span><i class="fa fa-search"></i></span>
+            </button>
+        </form>
+        <div class="p-1 m-2">
+            <ul id="sidebar-search-box" style="margin:1em; font-weight:600">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="single-blog-widget mb-50">
+    <h3>categories</h3>
+    <ul>
+        @foreach (Category category in Model.Categories)
+        {
+            <li>
+                <a asp-action="index" asp-controller="course" asp-route-category="@category.Id">
+                    @category.Name (@category.Courses.Count())
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="single-blog-widget mb-50">
+    <h3>latest post</h3>
+    @foreach (Blog blog in Model.Blogs)
+    {
+        <div class="single-post mb-30">
+            <div class="single-post-img">
+                <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id">
+                    <img src="~/assets/img/post/@blog.ImageUrl" alt="post">
+                    <div class="blog-hover">
+                        <i class="fa fa-link"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="single-post-content">
+                <h4><a href="blog-details.html">@blog.Title</a></h4>
+            </div>
+        </div>
+
+    }
+
+</div>
+

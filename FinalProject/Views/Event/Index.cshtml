@@ -1,0 +1,47 @@
+﻿@model List<Event>
+<!-- Blog Start -->
+<div class="blog-area event-area three text-center pt-150 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    @foreach (Event evnt in Model)
+                    {
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="single-event mb-60">
+                                <div class="event-img">
+                                    <a asp-controller="Event" asp-action="Detail" asp-route-id="@evnt.Id">
+                                        <img src="~/assets/img/event/@evnt.ImageUrl" alt="event">
+                                        <div class="course-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                    <div class="event-date">
+                                        <h3>@evnt.StartTime.Hour <span>@evnt.StartTime.ToString("MMM")</span></h3>
+                                    </div>
+                                </div>
+                                <div class="event-content text-left">
+                                    <h4><a asp-controller="Event" asp-action="Detail" asp-route-id="@evnt.Id">@evnt.Title</a></h4>
+                                    <ul>
+                                        <li><span>time:</span> @evnt.StartTime.Hour PM - @evnt.EndTime.Hour PM</li>
+                                        <li><span>venue</span> @evnt.Venue</li>
+                                    </ul>
+                                    <div class="event-content-right">
+                                        <a class="default-btn" asp-controller="Event" asp-action="Detail" asp-route-id="@evnt.Id">join now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    @await Component.InvokeAsync("Sidebar")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->

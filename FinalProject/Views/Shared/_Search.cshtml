@@ -1,0 +1,6 @@
+﻿@model List<Course>
+
+@foreach (Course course in Model)
+{
+    <li><a asp-action="detail" asp-controller="course" asp-route-id="@course.Id">@course.Title</a></li>
+}

@@ -1,0 +1,29 @@
+﻿@model List<Teacher>
+    <!-- Teacher Start -->
+<div class="teacher-area pt-150 pb-105">
+    <div class="container">
+        <div class="row">
+
+            @foreach (Teacher teacher in Model)
+            {
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="single-teacher mb-45">
+                        <div class="single-teacher-img">
+                            <a asp-action="Detail" asp-controller="Teacher" asp-route-id="@teacher.Id"><img src="~/assets/img/teacher/@teacher.ImageUrl" alt="teacher"></a>
+                        </div>
+                        <div class="single-teacher-content text-center">
+                            <h2><a asp-action="Detail" asp-controller="Teacher" asp-route-id="@teacher.Id">@teacher.FirstName @teacher.LastName</a></h2>
+                            <h4>@teacher.TeacherDetail.Position</h4>
+                            <ul>
+                                <li><a href="@teacher.TeacherDetail.Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="@teacher.TeacherDetail.Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- Teacher End --> 

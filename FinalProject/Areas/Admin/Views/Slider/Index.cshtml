@@ -1,0 +1,47 @@
+﻿@model List<Slider>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Striped Table</h4>
+            <p class="card-description">
+                <a class="btn btn-outline-primary" asp-controller="Slider" asp-action="Create">Create</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Slider
+                            </th>
+                            <th>
+                                Descripton
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Slider slider in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img src="~/assets/img/slider/@slider.ImageUrl" alt="image">
+                                </td>
+
+                                <td>
+                                    @slider.Description
+                                </td>
+                                
+                                <td>
+                                    <a class="btn btn-success" asp-controller="Slider" asp-action="Update" asp-route-id="@slider.Id">Update</a>
+                                    <a class="btn btn-warning" asp-controller="Slider" asp-action="Delete" asp-route-id="@slider.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

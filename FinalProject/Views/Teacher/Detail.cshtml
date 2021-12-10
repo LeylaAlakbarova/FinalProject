@@ -1,0 +1,66 @@
+﻿@model Teacher  
+
+ <!-- Teacher Start -->
+<div class="teacher-details-area pt-150 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="teacher-details-img">
+                    <img src="~/assets/img/teacher/@Model.ImageUrl" alt="teacher">
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="teacher-details-content ml-50">
+                    <h2>@Model.FirstName @Model.LastName</h2>
+                    <h5>@Model.TeacherDetail.Position</h5>
+                    <h4>about me</h4>
+                    <p>@Model.TeacherDetail.AboutMe</p>
+                    <ul>
+                        <li><span>experience: </span>@Model.TeacherDetail.Experience</li>
+                        <li><span>hobbies: </span>@Model.TeacherDetail.Hobbies</li>
+                        <li><span>faculty: </span>@Model.TeacherDetail.Faculty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="teacher-contact">
+                    <h4>contact information</h4>
+                    <p><span>mail me : </span>@Model.TeacherDetail.Email</p>
+                    <p><span>make a call : </span>@Model.TeacherDetail.Phone</p>
+                    <p><span>skype : </span> @Model.TeacherDetail.Skype</p>
+                    <ul>
+                        <li><a href="@Model.TeacherDetail.Twitter"><i class="zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="@Model.TeacherDetail.Facebook"><i class="zmdi zmdi-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="skill-area">
+                    <h4>skills</h4>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="row">
+
+                        @foreach (TeacherSkill skill in Model.Skills)
+                        {
+                            <div class="col-sm-4">
+                                <div class="skill-bar-item">
+                                    <span>@skill.Skill.Name</span>
+                                    <div class="progress">
+                                        <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @skill.SelfAssesedLevel%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                            <span class="text-top">@skill.SelfAssesedLevel%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Teacher End -->
