@@ -131,7 +131,6 @@ namespace FinalProject.Areas.Admin.Controllers
 			_db.Sliders.Remove(dbSlider);
 			await _db.SaveChangesAsync();
 			return RedirectToAction("Index");
-
 		}
 	}
 }
